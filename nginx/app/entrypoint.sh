@@ -10,20 +10,17 @@ DEFAULT_NAMESERVER='127.0.0.11'
 NGINX_CONF=/etc/nginx/nginx.conf
 
 # 判断本地 DNS 配置文件是否存在
-if [ ! -e "${RESOLVER_CONF}" ]
-then
+if [ ! -e "${RESOLVER_CONF}" ]; then
   exit 0
 fi
 
 # 判断本地 DNS 配置信息是否为空
-if [ -z "${NAMESERVER}" ]
-then
+if [ -z "${NAMESERVER}" ]; then
   exit 0
 fi
 
 # 替换 Nginx 配置文件内的 DNS 地址
-if [ "$(grep -c "${DEFAULT_NAMESERVER}" "${NGINX_CONF}")" -ne '0' ]
-then
+if [ "$(grep -c "${DEFAULT_NAMESERVER}" "${NGINX_CONF}")" -ne '0' ]; then
   sed -i "s/127.0.0.11/${NAMESERVER}/" "${NGINX_CONF}"
 fi
 
