@@ -1,7 +1,7 @@
 # 指定基础镜像
 FROM nginx:alpine
 
-# 复制处理本地 DNS 脚本文件
+# 复制执行文件
 COPY nginx/app /app/
 
 # 复制项目 nginx 配置文件
