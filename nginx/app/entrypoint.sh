@@ -25,7 +25,7 @@ fi
 
 # 替换 Nginx 配置文件内的 DNS 地址
 if [ "$(grep -c "${DEFAULT_NAMESERVER}" "${NGINX_CONF}")" -ne '0' ]; then
-  sed -i "s/127.0.0.11/${NAMESERVER}/" "${NGINX_CONF}"
+  sed -i "s/${DEFAULT_NAMESERVER}/${NAMESERVER}/" "${NGINX_CONF}"
 fi
 
 # 启动鉴权服务
